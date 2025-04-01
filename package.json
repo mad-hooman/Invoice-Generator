@@ -1,0 +1,25 @@
+{
+    "name": "orionledger-mark-ol1",
+    "productName": "OrionLedger Mark OL1",
+    "version": "1.0.3",
+    "description": "Professional Invoice Generation Application",
+    "author": "Mano",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron .",
+      "build": "electron-builder --mac"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "electron": "^28.1.0",
+      "electron-builder": "^24.9.1"
+    },
+    "build": {
+      "appId": "com.example.invoicegenerator",
+      "mac": {
+        "category": "public.app-category.business",
+        "target": "dmg",
+        "icon": "build/icon.png"
+      }
+    }
+  }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrionLedger - Mark OL1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OrionLedger - Mark OL1</h1>
+            <div class="controls">
+                <button id="newInvoice" class="btn">New Invoice</button>
+                <button id="manageClients" class="btn">Manage Clients</button>
+            </div>
+        </header>
+
+        <div class="invoice-form">
+            <!-- Business Info -->
+            <div class="section">
+                <h2>Business Info</h2>
+                <input type="text" id="businessName" value="Best Cuts Media Production" readonly>
+                <input type="text" id="invoiceNumber" placeholder="Order ID" readonly>
+                <input type="text" id="invoiceDate" readonly>
+            </div>
+
+            <!-- Client Info -->
+            <div class="section">
+                <h2>Client Info</h2>
+                <select id="clientSelect" onchange="loadClientDetails(this.value)">
+                    <option value="">Select Client</option>
+                </select>
+                <div id="clientDetails"></div>
+            </div>
+
+            <!-- Items Table -->
+            <div class="section">
+                <h2>Items/Services</h2>
+                <table id="itemsTable">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsBody"></tbody>
+                </table>
+                <button class="btn btn-add" onclick="addItemRow()">Add Item</button>
+            </div>
+
+            <!-- Financial Details -->
+            <div class="section">
+                <h2>Financial Details</h2>
+                <div class="grid-2">
+                    <div>
+                        <label>Currency:</label>
+                        <select id="currency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="INR">INR</option>
+                        </select>
+                    </div>
+                    <div class="payment-details">
+                        <label>Our Payment Details:</label>
+                        <textarea id="paymentDetails" placeholder="Enter bank details"></textarea>
+                    </div>
+                </div>
+                <div class="totals">
+                    <p class="total">Total Due: <span id="totalDue">0.00</span></p>
+                </div>
+            </div>
+
+            <button class="btn btn-save" onclick="saveInvoice()">Generate Invoice</button>
+        </div>
+
+        <!-- Client Management Modal -->
+        <div id="clientModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeClientModal()">&times;</span>
+                <h3>Manage Clients</h3>
+                <div class="client-list" id="clientList"></div>
+                <div class="client-form">
+                    <h4 id="formTitle">Add New Client</h4>
+                    <input type="hidden" id="editingClientId">
+                    <input type="text" id="clientName" placeholder="Client Name" required>
+                    <textarea id="clientAddress" placeholder="Address"></textarea>
+                    <input type="email" id="clientEmail" placeholder="Email">
+                    <input type="tel" id="clientPhone" placeholder="Phone">
+                    <div class="form-buttons">
+                        <button class="btn" onclick="saveClient()" id="saveClientBtn">Save Client</button>
+                        <button class="btn" onclick="clearClientForm()">New Client</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add this just before </div> closing tag for .container -->
+        <footer class="app-footer">
+        <p>Created by Mano</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
