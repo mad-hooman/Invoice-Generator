@@ -29,7 +29,7 @@ Perfect for freelancers, small businesses, and anyone needing streamlined invoic
 
 ### Installation  
 1. Clone repo:  
-`git clone https://github.com/yourusername/OrionLedger-Mark-OL1.git`  
+`git clone https://github.com/mad-hooman/Project-OrionLedger.git`  
 2. Install dependencies:  
 `npm install`  
 3. Start application:  
